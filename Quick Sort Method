@@ -1,0 +1,33 @@
+#Program in Python
+
+def quickSort(array):
+	helper(array, 0, len(array) - 1)
+	return array
+
+def helper(array, start, end):
+	if start >= end:
+		return
+	pivot = start 
+	pointerL = start + 1
+	pointerR = end
+	while pointerL <= pointerR:
+		if array[pointerL] > array[pivot] and array[pointerR] < array[pivot]:
+			swap(array, pointerL, pointerR)
+		if array[pointerL] <= array[pivot]:
+			pointerL += 1
+		if array[pointerR] >= array[pivot]:
+			pointerR -= 1
+	swap(array, pivot, pointerR)
+	if (pointerR - 1 - start) < (end - (pointerR + 1)):
+		leftArraySmaller = True
+	else:
+		leftArraySmaller = False
+	if leftArraySmaller:
+		helper(array, start, pointerR - 1)
+		helper(array, pointerR + 1, end)
+	else:
+		helper(array, pointerR + 1, end)
+		helper(array, start, pointerR - 1)
+	
+def swap(array, i, j):
+	array[i], array[j] = array[j], array[i]
