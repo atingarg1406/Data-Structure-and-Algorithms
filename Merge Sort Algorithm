@@ -1,0 +1,43 @@
+// Implementing Merge Sort Algorithm in C++
+
+#include<iostream>
+using namespace std;
+void sort(int *a,int left,int right);
+void merge(int *a,int left,int mid,int right);
+int main()
+{
+int a[20],i,num;
+cout<<"Enter size of array: ";
+cin>>num;
+cout<<"Enter array: ";
+for(i=0;i<num;i++)
+cin>>a[i];
+cout<<"Sorted array: ";
+sort(a,0,num-1);
+for(i=0;i<num;i++)
+cout<<a[i]<<"";
+}
+void sort(int *a,int left,int right){
+int mid;
+if(right-left>0){
+mid=(left+right)/2;
+sort(a,left,mid);
+sort(a,mid+1,right);
+merge(a,left,mid,right);}}
+void merge(int *a,int left,int mid,int right){
+int b[10],c[10],i,j=mid+1,k=left;
+for(i=0;i<=mid-left;i++){
+b[i]=a[k];k++;}
+for(i=0;i<=right-mid;i++){
+c[i]=a[j];j++;}
+i=0;j=0;k=left;
+while(k<=right){
+if(i>mid-left){
+a[k]=c[j];j++;k++;}
+else if(j>right-mid-1){
+a[k]=b[i];i++;k++;}
+else if(b[i]<=c[j]){
+a[k]=b[i];i++;k++;}
+else if(c[j]<b[i]){
+a[k]=c[j];j++;k++;
+}}}
