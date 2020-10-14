@@ -47,4 +47,5 @@ while(1){
     }
 }
 end:
-    cout<<"EXIT"; }
+    cout<<"EXIT";
+}
